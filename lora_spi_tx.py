@@ -4,7 +4,6 @@ import OPi.GPIO as GPIO
 
 
 
-
 try:
     # Пример использования класса
     sx1278 = SX1278(spi_bus=0, spi_device=0, cs_pin=24, reset_pin=10)
@@ -48,3 +47,4 @@ try:
         print("Not connected")
 except KeyboardInterrupt:
     GPIO.cleanup()
+    raise SystemExit

@@ -14,6 +14,7 @@ try:
     if not double_sx1278.check_connections():
         print("Error: Failed to establish connection with one or both SX1278 modules.")
         GPIO.cleanup()
+        raise SystemExit
     else:
         print("Success: Both SX1278 modules are connected correctly.")
 
@@ -96,3 +97,4 @@ try:
     print(data)
 except KeyboardInterrupt:
     GPIO.cleanup()
+    raise SystemExit
