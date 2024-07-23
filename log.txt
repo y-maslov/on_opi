@@ -1,0 +1,46 @@
+Лог программы
+Carrier Frequency: 436.70 MHz, Bandwidth: 250.00 kHz, Spreading Factor: 10, Coding Rate: 5, Sync Word: 18(Tue Jul 23 14:57:04 2024) Received UPlink packet:
+ RSSI:			-69.0 dBm
+ SNR:			10.250000 dB
+ Frequency error:	2321.547363 Hz
+ Data:			30 bytes
+
+  0000    74 72 61 6e 73 6d 69 74   74 65 72 20 73 77 69 74   transmitter swit
+  0100    63 68 2c 20 54 58 5f 53   58 31 32 37 38 21         ch, TX_SX1278!
+
+(Tue Jul 23 14:57:06 2024) Received UPlink packet:
+ RSSI:			-111.8 dBm
+ SNR:			-5.750000 dB
+ Frequency error:	2317.353027 Hz
+ Data:			27 bytes
+
+  0000    72 65 63 69 65 76 65 72   20 73 77 69 74 63 68 2c   reciever switch,
+  0100    20 54 58 5f 53 58 31 32   37 38 21                   TX_SX1278!
+
+(Tue Jul 23 14:57:08 2024) Received UPlink packet:
+ RSSI:			-104.8 dBm
+ SNR:			-0.750000 dB
+ Frequency error:	3307.208740 Hz
+ Data:			30 bytes
+
+  0000    74 72 61 6e 73 6d 69 74   74 65 72 20 73 77 69 74   transmitter swit
+  0100    63 68 2c 20 52 58 5f 53   58 31 32 37 38 21         ch, RX_SX1278!
+
+(Tue Jul 23 14:57:11 2024) Received UPlink packet:
+ RSSI:			-70.0 dBm
+ SNR:			10.250000 dB
+ Frequency error:	3303.014404 Hz
+ Data:			27 bytes
+
+  0000    72 65 63 69 65 76 65 72   20 73 77 69 74 63 68 2c   reciever switch,
+  0100    20 52 58 5f 53 58 31 32   37 38 21                   RX_SX1278!
+
+(Tue Jul 23 14:57:13 2024) Received UPlink packet:
+ RSSI:			-70.0 dBm
+ SNR:			10.250000 dB
+ Frequency error:	2321.547363 Hz
+ Data:			30 bytes
+
+  0000    74 72 61 6e 73 6d 69 74   74 65 72 20 73 77 69 74   transmitter swit
+  0100    63 68 2c 20 54 58 5f 53   58 31 32 37 38 21         ch, TX_SX1278!
+

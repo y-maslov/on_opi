@@ -14,8 +14,6 @@ class SX1278:
     ----------
     spi : spidev.SpiDev
         SPI interface for communication with SX1278.
-    cs_pin : int
-        GPIO pin used for Chip Select (CS).
     reset_pin : int
         GPIO pin used for resetting the SX1278.
     dio0_pin : int, optional
@@ -23,7 +21,7 @@ class SX1278:
 
     Methods
     -------
-    __init__(spi_bus, spi_device, cs_pin, reset_pin)
+    __init__(spi_bus, spi_device, reset_pin)
         Initializes the SPI interface and configures GPIO pins.
     reset()
         Resets the SX1278 module.
@@ -65,7 +63,7 @@ class SX1278:
         Retrieves the current configuration of the SX1278 and prints it in a human-readable format.
     """
 
-    def __init__(self, spi_bus, spi_device, cs_pin, reset_pin):
+    def __init__(self, spi_bus, spi_device, reset_pin):
         """
         Initializes the SPI interface and configures GPIO pins.
 
@@ -77,8 +75,6 @@ class SX1278:
             SPI bus number.
         spi_device : int
             SPI device number.
-        cs_pin : int
-            GPIO pin used for Chip Select (CS).
         reset_pin : int
             GPIO pin used for resetting the SX1278.
         """
@@ -92,11 +88,9 @@ class SX1278:
 
         self.spi.max_speed_hz = 5000000
 
-        # self.cs_pin = cs_pin
         self.reset_pin = reset_pin
 
         GPIO.setmode(orangepi.pc.BOARD)
-        # GPIO.setup(self.cs_pin, GPIO.OUT)
         GPIO.setup(self.reset_pin, GPIO.OUT)
 
         self.reset()
@@ -127,9 +121,7 @@ class SX1278:
         value : int
             The value to write to the register.
         """
-        # GPIO.output(self.cs_pin, GPIO.LOW)
         self.spi.xfer2([address | 0x80, value])
-        # GPIO.output(self.cs_pin, GPIO.HIGH)
 
     def read_register(self, address):
         """
@@ -145,9 +137,7 @@ class SX1278:
         int
             The value read from the register.
         """
-        # GPIO.output(self.cs_pin, GPIO.LOW)
         value = self.spi.xfer2([address & 0x7F, 0x00])
-        # GPIO.output(self.cs_pin, GPIO.HIGH)
         return value[1]
 
     def configure(self):
@@ -549,8 +539,8 @@ class DoubleSX1278:
 
     Methods
     -------
-    __init__(rx_spi_bus, rx_spi_device, rx_cs_pin, rx_reset_pin,
-             tx_spi_bus, tx_spi_device, tx_cs_pin, tx_reset_pin,
+    __init__(rx_spi_bus, rx_spi_device, rx_reset_pin,
+             tx_spi_bus, tx_spi_device, tx_reset_pin,
              gpio_a, gpio_b)
         Initializes the receiver and transmitter modules and configures the GPIO pins for the multiplexer.
     send_data(data)
@@ -569,8 +559,8 @@ class DoubleSX1278:
         Switches the multiplexer to connect the transmitter module.
     """
 
-    def __init__(self, rx_spi_bus, rx_spi_device, rx_cs_pin, rx_reset_pin,
-                 tx_spi_bus, tx_spi_device, tx_cs_pin, tx_reset_pin,
+    def __init__(self, rx_spi_bus, rx_spi_device, rx_reset_pin,
+                 tx_spi_bus, tx_spi_device, tx_reset_pin,
                  gpio_a, gpio_b):
         """
         Initializes the receiver and transmitter modules and configures the GPIO pins for the multiplexer.
@@ -581,16 +571,12 @@ class DoubleSX1278:
             SPI bus number for the receiver.
         rx_spi_device : int
             SPI device number for the receiver.
-        rx_cs_pin : int
-            GPIO pin used for Chip Select (CS) on the receiver.
         rx_reset_pin : int
             GPIO pin used for resetting the receiver.
         tx_spi_bus : int
             SPI bus number for the transmitter.
         tx_spi_device : int
             SPI device number for the transmitter.
-        tx_cs_pin : int
-            GPIO pin used for Chip Select (CS) on the transmitter.
         tx_reset_pin : int
             GPIO pin used for resetting the transmitter.
         gpio_a : int
@@ -598,8 +584,8 @@ class DoubleSX1278:
         gpio_b : int
             GPIO pin used for control line B of the HMC435 multiplexer.
         """
-        self.receiver = SX1278(rx_spi_bus, rx_spi_device, rx_cs_pin, rx_reset_pin)
-        self.transmitter = SX1278(tx_spi_bus, tx_spi_device, tx_cs_pin, tx_reset_pin)
+        self.receiver = SX1278(rx_spi_bus, rx_spi_device, rx_reset_pin)
+        self.transmitter = SX1278(tx_spi_bus, tx_spi_device, tx_reset_pin)
 
         self.gpio_a = gpio_a
         self.gpio_b = gpio_b

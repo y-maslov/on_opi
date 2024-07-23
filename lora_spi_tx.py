@@ -7,7 +7,7 @@ import OPi.GPIO as GPIO
 
 try:
     # Пример использования класса
-    sx1278 = SX1278(spi_bus=0, spi_device=1, cs_pin=24, reset_pin=10)
+    sx1278 = SX1278(spi_bus=0, spi_device=0, cs_pin=24, reset_pin=10)
     connected = sx1278.check_connection()
     if connected:
         # Настраиваем параметры

@@ -5,8 +5,8 @@ import OPi.GPIO as GPIO
 
 try:
     double_sx1278 = DoubleSX1278(
-        rx_spi_bus=0, rx_spi_device=0, rx_cs_pin=24, rx_reset_pin=8,
-        tx_spi_bus=0, tx_spi_device=1, tx_cs_pin=26, tx_reset_pin=10,
+        rx_spi_bus=0, rx_spi_device=0, rx_reset_pin=8,
+        tx_spi_bus=0, tx_spi_device=1, tx_reset_pin=10,
         gpio_a=33, gpio_b=29  # Пример GPIO пинов для управления мультиплексором
     )
 
