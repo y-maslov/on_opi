@@ -49,7 +49,7 @@ try:
     while(True):
         double_sx1278.switch_to_receiver()
         print("reciever switch, RX_SX1278!")
-
+        
         # Принимаем данные
         print("-" * 30)
         print(f"CURRENT RSSI: {double_sx1278.receiver.get_current_rssi()} dBm")
